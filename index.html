@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dados sobre a Covid19</title>
+	<style type="text/css">
+		body{
+			background-color: #9932CC;
+		}
+
+		table{
+			background-color: #00008B;
+			width: 30%;
+			margin: auto;
+			
+		}
+		td, th{
+			border: 1px solid #0a4bd8;
+			text-align: center;
+			background-color: #FFFAF0;
+			padding: 1px;
+			font-size: 25px;
+		}
+		h1{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Dados Covid19 Brasil</h1>
+	<br>
+	<div id="dados_covid">
+		<table>
+			<tr>
+				<th>Confirmados no Brasil: </th>
+				<th id="Confirmados_brasil"></th>
+			</tr>
+			<tr>
+				<th>Casos recuperados: </th>
+				<th id="Recuperados_Brasil"></th>
+			</tr>
+			<tr>
+				<th>Mortes: </th>
+				<th id="Mortes_Brasil"></th>
+			</tr>
+			</table>
+			<br><br>
+			<h1>Dados Covid19 no Rio Grande do Norte</h1>
+			
+			<table>
+			<tr>
+				<th>Confirmados no RN: </th>
+				<th id="Confirmados_rn"></th>
+			</tr>
+			<tr>
+				<th>Mortes no RN: </th>
+				<th id="Mortes_rn"></th>
+			</tr>
+		</table>
+	</div>
+	
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-database.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyDGoW_kWN-sEt9qe7zg4w2cC8QaznrUGR4",
+    authDomain: "teste-python-5ed5c.firebaseapp.com",
+    databaseURL: "https://teste-python-5ed5c.firebaseio.com",
+    projectId: "teste-python-5ed5c",
+    storageBucket: "teste-python-5ed5c.appspot.com",
+    messagingSenderId: "1051697928308",
+    appId: "1:1051697928308:web:fb0769a25aad4a7db9d921",
+    measurementId: "G-TGTG86YHTZ"
+  };
+  // Initialize Firebase
+
+  firebase.initializeApp(firebaseConfig);
+  
+
+  	var Confirmados_Brasil = document.getElementById('Confirmados_brasil')
+	
+	var Brasil_Confirmados = firebase.database().ref().child("Confirmados_Brasil");
+	Brasil_Confirmados.on('value',function(x){
+		Confirmados_Brasil.innerText = x.val();
+	})
+	var Recuperados_Brasil = document.getElementById('Recuperados_Brasil')
+	
+	var Brasil_Recuperados = firebase.database().ref().child("Recuperados_Brasil");
+	Brasil_Recuperados.on('value',function(y){
+		Recuperados_Brasil.innerText = y.val();
+	})
+	var Mortes_Brasil = document.getElementById('Mortes_Brasil')
+
+	var Brasil_Mortes = firebase.database().ref().child("Mortes_Brasil");
+
+	Brasil_Mortes.on('value',function(x){
+		Mortes_Brasil.innerText = x.val();
+	})
+
+	var Confirmados_rn = document.getElementById('Confirmados_rn')
+	var Rn_Confirmados = firebase.database().ref().child('Confirmados_rn')
+	Rn_Confirmados.on('value',function(x){
+		Confirmados_rn.innerText = x.val();
+	})
+
+	var Mortes_rn = document.getElementById('Mortes_rn')
+	var Rn_Confirmados = firebase.database().ref().child('Mortes_rn')
+	Rn_Confirmados.on('value',function(x){
+		Mortes_rn.innerText = x.val();
+	}) 
+</script>
+
+
+</body>
+</html>
