@@ -84,12 +84,7 @@
 	Brasil_Confirmados.on('value',function(x){
 		Confirmados_Brasil.innerText = x.val();
 	})
-	var Recuperados_Brasil = document.getElementById('Recuperados_Brasil')
 	
-	var Brasil_Recuperados = firebase.database().ref().child("Recuperados_Brasil");
-	Brasil_Recuperados.on('value',function(y){
-		Recuperados_Brasil.innerText = y.val();
-	})
 	var Mortes_Brasil = document.getElementById('Mortes_Brasil')
 
 	var Brasil_Mortes = firebase.database().ref().child("Mortes_Brasil");
